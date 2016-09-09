@@ -17,8 +17,8 @@ $ docker build --rm -t YOURNAME/tushare-tensorflow:VERSION .
 
 如果你工作在一个使用代理的网络中，可以在Dockerfile第四行添加如下代码：
 
-> ENV http_proxy "http://USERNAME:PASSWORD@your.proxy.com:port"
-> ENV https_proxy "https://USERNAME:PASSWORD@your.proxy.com:port"
+> ENV http_proxy "http://USERNAME:PASSWORD@your.proxy.com:port"  
+ENV https_proxy "https://USERNAME:PASSWORD@your.proxy.com:port"
 
 # 运行这个容器
 
@@ -30,5 +30,5 @@ $ docker run --name tushare -p 8888:8888 -d YOURNAME/tushare-tensorflow:VERSION
 
 If you find this image useful here's how you can help:
 
-    * Send a Pull Request with your awesome new features and bug fixes.
-    * Be a part of the community and help resolve Issues.
+   * Send a Pull Request with your awesome new features and bug fixes.
+   * Be a part of the community and help resolve Issues.
