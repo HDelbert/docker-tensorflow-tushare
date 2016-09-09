@@ -4,11 +4,14 @@ MAINTAINER Meng.Hu <humeng.jade@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
+ENV NOTEBOOKS_DIR="/notebooks"
+
 RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y \
     libxml2 \
     python-lxml \
+    python-psycopg2 \
     libblas-dev \
     liblapack-dev \
  && apt-get clean \
@@ -26,3 +29,5 @@ RUN pip --no-cache-dir install \
 # Install tushare
 RUN pip --no-cache-dir install \
   tushare
+
+VOLUME ["${NOTEBOOKS_DIR}"]

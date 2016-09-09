@@ -23,7 +23,17 @@ $ docker build --rm -t YOURNAME/tushare-tensorflow:VERSION .
 # 运行这个容器
 
 ```bash
-$ docker run --name tushare -p 8888:8888 -d YOURNAME/tushare-tensorflow:VERSION
+$ docker run --name tushare -d \
+    --publish 8888:8888 \
+    --volume /home/YOURNAME/notebooks:/notebooks \
+    YOURNAME/tushare-tensorflow:VERSION
+
+OR with Database container
+$ docker run --name tushare -d \
+    --publish 8888:8888 \
+    --volume /home/YOURNAME/notebooks:/notebooks \
+    --link postgresql:postgresql \
+    YOURNAME/tushare-tensorflow:VERSION
 ```
 
 # Contributing
