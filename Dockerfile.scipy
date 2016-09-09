@@ -38,4 +38,6 @@ RUN pip --no-cache-dir install \
 
 VOLUME ["${NOTEBOOKS_DIR}"]
 
+WORKDIR "${NOTEBOOKS_DIR}"
+
 USER $NB_USER
