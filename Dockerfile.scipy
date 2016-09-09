@@ -36,6 +36,24 @@ RUN pip --no-cache-dir install \
   MySQL-python \
   tushare
 
+# Upgrade pip
+RUN pip2 --no-cache-dir install \
+  --upgrade pip
+
+# Install dependences
+RUN pip2 --no-cache-dir install \
+  cvxopt
+
+RUN pip2 --no-cache-dir install \
+  lxml
+
+# Install tushare
+RUN pip2 --no-cache-dir install \
+  sqlalchemy \
+  pymongo \
+  MySQL-python \
+  tushare
+
 VOLUME ["${NOTEBOOKS_DIR}"]
 
 WORKDIR "${NOTEBOOKS_DIR}"
