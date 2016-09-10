@@ -1,22 +1,20 @@
-FROM jupyter/scipy-notebook:latest
+FROM b.gcr.io/tensorflow/tensorflow:latest
 
 MAINTAINER Meng.Hu <humeng.jade@gmail.com>
-
-USER root
 
 ENV DEBIAN_FRONTEND=noninteractive \
     NOTEBOOKS_DIR="/notebooks"
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends \
+  && apt-get install -y \
     libxml2 \
     python-lxml \
     python-psycopg2 \
     libblas-dev \
     liblapack-dev \
     libmysqld-dev \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip
 RUN pip --no-cache-dir install \
@@ -24,36 +22,15 @@ RUN pip --no-cache-dir install \
 
 # Install dependences
 RUN pip --no-cache-dir install \
+  pandas \
+  lxml \
   cvxopt
-
-RUN pip --no-cache-dir install \
-  lxml
 
 # Install tushare
 RUN pip --no-cache-dir install \
   sqlalchemy \
   pymongo \
-  tushare
-
-# Upgrade pip
-RUN pip2 --no-cache-dir install \
-  --upgrade pip
-
-# Install dependences
-RUN pip2 --no-cache-dir install \
-  cvxopt
-
-RUN pip2 --no-cache-dir install \
-  lxml
-
-# Install tushare
-RUN pip2 --no-cache-dir install \
-  sqlalchemy \
-  pymongo \
+  MySQL-python \
   tushare
 
 VOLUME ["${NOTEBOOKS_DIR}"]
-
-WORKDIR "${NOTEBOOKS_DIR}"
-
-USER $NB_USER

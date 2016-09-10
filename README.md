@@ -1,11 +1,12 @@
 # 通过Docker使用TuShare
 
-这个容器继承自google的b.gcr.io/tensorflow/tensorflow，方便使用tensorflow来对股票数据做操作。
+这里有三个容器，都是为TuShare使用的。一个继承于tensorflow，方便使用tensorflow对数据进行学习；第二个是继承自jupyter/scipy-docker，里面有很多科学计算的python库；第三个是只有tushare的，简单容器。这些容器都是用ipython来操作的。
 
 # 依赖
 
 * [tensorflow](https://github.com/tensorflow/tensorflow)
 * [tushare](https://github.com/waditu/tushare)
+* [jupyter](https://github.com/jupyter/docker-stacks)
 
 # 编译这个容器
 
